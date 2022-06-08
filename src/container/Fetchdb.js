@@ -25,3 +25,13 @@ export function getTodos() {
     }).then(res => res.json())
     .then(data => data)
   }
+  export function updateTodo(todo){
+    return fetch(`http://localhost:4000/todo/${todo.id}`,{
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(todo)
+    }).then(res => res.json())
+    .then(data => data);
+  }

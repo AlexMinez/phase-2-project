@@ -23,7 +23,7 @@ export default function MovieAPI() {
 useEffect(() => {
     fetchMovies()
 },[finalpoint])
-//setting 2nd params to finalpoint in order to stop the page from re rendering every letter the input value has changed
+//setting 2nd params to finalpoint in order to stop the page from re rendering every letter and only re renders  when the finalpoint has been changed
 
 const fetchMovies = () => {
         return fetch(`https://online-movie-database.p.rapidapi.com/auto-complete?q=+${endpoint}`, options)

@@ -1,6 +1,6 @@
 import React , {useState, useEffect} from 'react'
 import '../assets/Todostyles.css'
-import { addTodos, deleteTodos, getTodos } from './Fetchdb'
+import { addTodos, deleteTodos, getTodos, updateTodo } from './Fetchdb'
 import TodoForm from '../components/TodoForm'
 import TodoList from '../components/TodoList'
 
@@ -34,12 +34,21 @@ const removeTodo = (id) => {
     })
 }
 
+const patchTodo = (todo) => {
+    return updateTodo(todo)
+      .then(data => {
+        const bookIndex = todos.findIndex(todo => todo.id === data.id)
+        setTodos([...todos.slice(0,bookIndex),data,...todos.slice(bookIndex+1)])
+      })
+  }
+
+
   return (
     <div className='render-div'>
         <h1>Todo List!</h1>
         <TodoForm newTodo={newTodo} />
 
-        <TodoList setTodos={setTodos} todos={todos} removeTodo={removeTodo} />
+        <TodoList setTodos={setTodos} todos={todos} removeTodo={removeTodo} patchTodo={patchTodo}/>
     </div>
   )
 }

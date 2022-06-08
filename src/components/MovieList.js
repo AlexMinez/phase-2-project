@@ -12,7 +12,8 @@ const {endpoint, onChangeHandler,submitHandler, container} = props;
             placeholder='Search for a Movie!'
             className='movie-search'
             value={endpoint}
-            onChange={onChangeHandler}/>
+            onChange={onChangeHandler}
+            />
 
         <button type="submit" className='movie-btn'>Search</button>
       </form>
